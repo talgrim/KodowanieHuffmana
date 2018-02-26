@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KodowanieHuffmana
 {
-    public class Symbol : IEquatable<Symbol>
+    public class Symbol : IEquatable<Symbol>, IComparable<Symbol>
     {
         public char symbol;
         public int presence;
@@ -23,18 +23,17 @@ namespace KodowanieHuffmana
 
         public bool Equals(Symbol other)
         {
-            return this.symbol == other.symbol &&
-                this.presence == other.presence;
-        }
-
-        public bool Equals(char znak)
-        {
-            return this.symbol == znak;
+            return this.symbol == other.symbol;
         }
 
         public int GetHashCode(Symbol obj)
         {
             throw new NotImplementedException();
+        }
+
+        public int CompareTo(Symbol other)
+        {
+            return presence.CompareTo(other.presence);
         }
     }
 }

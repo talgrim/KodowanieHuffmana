@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace KodowanieHuffmana
 {
@@ -40,11 +41,11 @@ namespace KodowanieHuffmana
                         else
                             symbols.AddPresence(znak);
                     }
-
+                    symbols.SortAscending();
                     lAlphabetLength.Text = symbols.List.Count.ToString();
                     gAlphabet.Visible = true;
                     gAlphabet.DataSource = symbols.List;
-
+                    return;
                 }
                 catch (IOException)
                 {

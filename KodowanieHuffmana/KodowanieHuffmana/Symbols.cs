@@ -30,5 +30,15 @@ namespace KodowanieHuffmana
         {
             return List.Contains(new Symbol(znak));
         }
+
+        public void SortAscending()
+        {
+            List = List.OrderBy(o => o.presence).ToList();
+        }
+
+        public void SortDescending()
+        {
+            List = List.OrderByDescending(o => o.presence).ToList();
+        }
     }
 }

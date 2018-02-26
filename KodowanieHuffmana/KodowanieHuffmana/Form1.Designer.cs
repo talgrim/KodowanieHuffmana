@@ -93,6 +93,7 @@
             // 
             // gAlphabet
             // 
+            this.gAlphabet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.gAlphabet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gAlphabet.Location = new System.Drawing.Point(12, 100);
             this.gAlphabet.Name = "gAlphabet";
@@ -105,7 +106,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(284, 331);
             this.Controls.Add(this.gAlphabet);
             this.Controls.Add(this.lAlphabetLength);
             this.Controls.Add(this.label5);
