@@ -20,6 +20,7 @@ namespace KodowanieHuffmana
         {
             InitializeComponent();
             ofd1 = new OpenFileDialog();
+            ofd1.Filter = "Text|*.txt";
         }
 
         private void bBrowse_Click(object sender, EventArgs e)
@@ -36,10 +37,13 @@ namespace KodowanieHuffmana
 
                     foreach(char znak in text)
                     {
-                        if (!symbols.Contains(znak))
-                            symbols.Add(znak);
-                        else
-                            symbols.AddPresence(znak);
+                        if (Char.IsLetterOrDigit(znak))
+                        {
+                            if (!symbols.Contains(znak))
+                                symbols.Add(znak);
+                            else
+                                symbols.AddPresence(znak);
+                        }
                     }
                     symbols.SortAscending();
                     lAlphabetLength.Text = symbols.List.Count.ToString();
