@@ -35,6 +35,17 @@
             this.lAlphabetLength = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.gAlphabet = new System.Windows.Forms.DataGridView();
+            this.encodeButton = new System.Windows.Forms.Button();
+            this.encodedTextBox = new System.Windows.Forms.TextBox();
+            this.decodedTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.saveFileButton = new System.Windows.Forms.Button();
+            this.readButton = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.fileTextBox = new System.Windows.Forms.TextBox();
+            this.writeFileKeyButton = new System.Windows.Forms.Button();
+            this.readFileKeyButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gAlphabet)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,11 +113,123 @@
             this.gAlphabet.TabIndex = 6;
             this.gAlphabet.Visible = false;
             // 
+            // encodeButton
+            // 
+            this.encodeButton.Location = new System.Drawing.Point(12, 52);
+            this.encodeButton.Name = "encodeButton";
+            this.encodeButton.Size = new System.Drawing.Size(75, 23);
+            this.encodeButton.TabIndex = 7;
+            this.encodeButton.Text = "Kompresuj";
+            this.encodeButton.UseVisualStyleBackColor = true;
+            this.encodeButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // encodedTextBox
+            // 
+            this.encodedTextBox.Location = new System.Drawing.Point(295, 39);
+            this.encodedTextBox.Multiline = true;
+            this.encodedTextBox.Name = "encodedTextBox";
+            this.encodedTextBox.Size = new System.Drawing.Size(184, 209);
+            this.encodedTextBox.TabIndex = 8;
+            // 
+            // decodedTextBox
+            // 
+            this.decodedTextBox.Location = new System.Drawing.Point(529, 39);
+            this.decodedTextBox.Multiline = true;
+            this.decodedTextBox.Name = "decodedTextBox";
+            this.decodedTextBox.Size = new System.Drawing.Size(367, 88);
+            this.decodedTextBox.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(292, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Skompresowane dane";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(526, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(96, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Wynik dekompresji";
+            // 
+            // saveFileButton
+            // 
+            this.saveFileButton.Location = new System.Drawing.Point(529, 262);
+            this.saveFileButton.Name = "saveFileButton";
+            this.saveFileButton.Size = new System.Drawing.Size(75, 23);
+            this.saveFileButton.TabIndex = 12;
+            this.saveFileButton.Text = "Zapisz plik";
+            this.saveFileButton.UseVisualStyleBackColor = true;
+            this.saveFileButton.Click += new System.EventHandler(this.saveFileButton_Click);
+            // 
+            // readButton
+            // 
+            this.readButton.Location = new System.Drawing.Point(721, 262);
+            this.readButton.Name = "readButton";
+            this.readButton.Size = new System.Drawing.Size(75, 23);
+            this.readButton.TabIndex = 13;
+            this.readButton.Text = "Odczytaj plik";
+            this.readButton.UseVisualStyleBackColor = true;
+            this.readButton.Click += new System.EventHandler(this.readButton_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(526, 142);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(137, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Wynik odczytywania z pliku";
+            // 
+            // fileTextBox
+            // 
+            this.fileTextBox.Location = new System.Drawing.Point(529, 158);
+            this.fileTextBox.Multiline = true;
+            this.fileTextBox.Name = "fileTextBox";
+            this.fileTextBox.Size = new System.Drawing.Size(367, 90);
+            this.fileTextBox.TabIndex = 15;
+            // 
+            // writeFileKeyButton
+            // 
+            this.writeFileKeyButton.Location = new System.Drawing.Point(620, 262);
+            this.writeFileKeyButton.Name = "writeFileKeyButton";
+            this.writeFileKeyButton.Size = new System.Drawing.Size(81, 23);
+            this.writeFileKeyButton.TabIndex = 16;
+            this.writeFileKeyButton.Text = "Zapisz klucz";
+            this.writeFileKeyButton.UseVisualStyleBackColor = true;
+            this.writeFileKeyButton.Click += new System.EventHandler(this.writeFileKeyButton_Click);
+            // 
+            // readFileKeyButton
+            // 
+            this.readFileKeyButton.Location = new System.Drawing.Point(811, 262);
+            this.readFileKeyButton.Name = "readFileKeyButton";
+            this.readFileKeyButton.Size = new System.Drawing.Size(85, 23);
+            this.readFileKeyButton.TabIndex = 17;
+            this.readFileKeyButton.Text = "Odczytaj klucz";
+            this.readFileKeyButton.UseVisualStyleBackColor = true;
+            this.readFileKeyButton.Click += new System.EventHandler(this.readFileKeyButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 331);
+            this.ClientSize = new System.Drawing.Size(908, 297);
+            this.Controls.Add(this.readFileKeyButton);
+            this.Controls.Add(this.writeFileKeyButton);
+            this.Controls.Add(this.fileTextBox);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.readButton);
+            this.Controls.Add(this.saveFileButton);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.decodedTextBox);
+            this.Controls.Add(this.encodedTextBox);
+            this.Controls.Add(this.encodeButton);
             this.Controls.Add(this.gAlphabet);
             this.Controls.Add(this.lAlphabetLength);
             this.Controls.Add(this.label5);
@@ -131,6 +254,17 @@
         private System.Windows.Forms.Label lAlphabetLength;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView gAlphabet;
+        private System.Windows.Forms.Button encodeButton;
+        private System.Windows.Forms.TextBox encodedTextBox;
+        private System.Windows.Forms.TextBox decodedTextBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button saveFileButton;
+        private System.Windows.Forms.Button readButton;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox fileTextBox;
+        private System.Windows.Forms.Button writeFileKeyButton;
+        private System.Windows.Forms.Button readFileKeyButton;
     }
 }
 

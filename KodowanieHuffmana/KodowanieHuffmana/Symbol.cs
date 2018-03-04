@@ -9,16 +9,23 @@ namespace KodowanieHuffmana
 {
     public class Symbol : IEquatable<Symbol>, IComparable<Symbol>
     {
-        public char symbol;
+        public char? symbol;
         public int presence;
         [DisplayName("Symbol")]
         public string Znak => symbol.ToString();
         [DisplayName("Liczba wystąpień")]
         public string Wystapienia => presence.ToString();
-        public Symbol(char znak)
+
+        public Symbol(char? znak)
         {
             symbol = znak;
             presence = 1;
+        }
+
+        public Symbol(char? znak,int wystapienia)
+        {
+            symbol = znak;
+            presence = wystapienia;
         }
 
         public bool Equals(Symbol other)
