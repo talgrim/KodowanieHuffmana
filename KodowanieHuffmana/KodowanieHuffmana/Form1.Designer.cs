@@ -46,13 +46,14 @@
             this.fileTextBox = new System.Windows.Forms.TextBox();
             this.writeFileKeyButton = new System.Windows.Forms.Button();
             this.readFileKeyButton = new System.Windows.Forms.Button();
+            this.CompressionRatio = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gAlphabet)).BeginInit();
             this.SuspendLayout();
             // 
             // bBrowse
             // 
             this.bBrowse.Location = new System.Drawing.Point(16, 15);
-            this.bBrowse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bBrowse.Margin = new System.Windows.Forms.Padding(4);
             this.bBrowse.Name = "bBrowse";
             this.bBrowse.Size = new System.Drawing.Size(100, 28);
             this.bBrowse.TabIndex = 0;
@@ -113,7 +114,7 @@
             this.gAlphabet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.gAlphabet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gAlphabet.Location = new System.Drawing.Point(16, 123);
-            this.gAlphabet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gAlphabet.Margin = new System.Windows.Forms.Padding(4);
             this.gAlphabet.Name = "gAlphabet";
             this.gAlphabet.ReadOnly = true;
             this.gAlphabet.Size = new System.Drawing.Size(347, 185);
@@ -123,7 +124,7 @@
             // encodeButton
             // 
             this.encodeButton.Location = new System.Drawing.Point(16, 64);
-            this.encodeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.encodeButton.Margin = new System.Windows.Forms.Padding(4);
             this.encodeButton.Name = "encodeButton";
             this.encodeButton.Size = new System.Drawing.Size(100, 28);
             this.encodeButton.TabIndex = 7;
@@ -134,20 +135,22 @@
             // encodedTextBox
             // 
             this.encodedTextBox.Location = new System.Drawing.Point(393, 48);
-            this.encodedTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.encodedTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.encodedTextBox.Multiline = true;
             this.encodedTextBox.Name = "encodedTextBox";
             this.encodedTextBox.ReadOnly = true;
+            this.encodedTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.encodedTextBox.Size = new System.Drawing.Size(244, 256);
             this.encodedTextBox.TabIndex = 8;
             // 
             // decodedTextBox
             // 
             this.decodedTextBox.Location = new System.Drawing.Point(705, 48);
-            this.decodedTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.decodedTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.decodedTextBox.Multiline = true;
             this.decodedTextBox.Name = "decodedTextBox";
             this.decodedTextBox.ReadOnly = true;
+            this.decodedTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.decodedTextBox.Size = new System.Drawing.Size(488, 107);
             this.decodedTextBox.TabIndex = 9;
             // 
@@ -174,7 +177,7 @@
             // saveFileButton
             // 
             this.saveFileButton.Location = new System.Drawing.Point(705, 322);
-            this.saveFileButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.saveFileButton.Margin = new System.Windows.Forms.Padding(4);
             this.saveFileButton.Name = "saveFileButton";
             this.saveFileButton.Size = new System.Drawing.Size(100, 28);
             this.saveFileButton.TabIndex = 12;
@@ -185,7 +188,7 @@
             // readFileButton
             // 
             this.readFileButton.Location = new System.Drawing.Point(961, 322);
-            this.readFileButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.readFileButton.Margin = new System.Windows.Forms.Padding(4);
             this.readFileButton.Name = "readFileButton";
             this.readFileButton.Size = new System.Drawing.Size(100, 28);
             this.readFileButton.TabIndex = 13;
@@ -206,17 +209,18 @@
             // fileTextBox
             // 
             this.fileTextBox.Location = new System.Drawing.Point(705, 194);
-            this.fileTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fileTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.fileTextBox.Multiline = true;
             this.fileTextBox.Name = "fileTextBox";
             this.fileTextBox.ReadOnly = true;
+            this.fileTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.fileTextBox.Size = new System.Drawing.Size(488, 110);
             this.fileTextBox.TabIndex = 15;
             // 
             // writeFileKeyButton
             // 
             this.writeFileKeyButton.Location = new System.Drawing.Point(827, 322);
-            this.writeFileKeyButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.writeFileKeyButton.Margin = new System.Windows.Forms.Padding(4);
             this.writeFileKeyButton.Name = "writeFileKeyButton";
             this.writeFileKeyButton.Size = new System.Drawing.Size(108, 28);
             this.writeFileKeyButton.TabIndex = 16;
@@ -227,7 +231,7 @@
             // readFileKeyButton
             // 
             this.readFileKeyButton.Location = new System.Drawing.Point(1081, 322);
-            this.readFileKeyButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.readFileKeyButton.Margin = new System.Windows.Forms.Padding(4);
             this.readFileKeyButton.Name = "readFileKeyButton";
             this.readFileKeyButton.Size = new System.Drawing.Size(113, 28);
             this.readFileKeyButton.TabIndex = 17;
@@ -235,11 +239,21 @@
             this.readFileKeyButton.UseVisualStyleBackColor = true;
             this.readFileKeyButton.Click += new System.EventHandler(this.readFileKeyButton_Click);
             // 
+            // CompressionRatio
+            // 
+            this.CompressionRatio.AutoSize = true;
+            this.CompressionRatio.Location = new System.Drawing.Point(84, 332);
+            this.CompressionRatio.Name = "CompressionRatio";
+            this.CompressionRatio.Size = new System.Drawing.Size(158, 17);
+            this.CompressionRatio.TabIndex = 18;
+            this.CompressionRatio.Text = "Współczynnik kompresji";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1211, 366);
+            this.Controls.Add(this.CompressionRatio);
             this.Controls.Add(this.readFileKeyButton);
             this.Controls.Add(this.writeFileKeyButton);
             this.Controls.Add(this.fileTextBox);
@@ -258,7 +272,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bBrowse);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.gAlphabet)).EndInit();
@@ -287,6 +301,7 @@
         private System.Windows.Forms.TextBox fileTextBox;
         private System.Windows.Forms.Button writeFileKeyButton;
         private System.Windows.Forms.Button readFileKeyButton;
+        private System.Windows.Forms.Label CompressionRatio;
     }
 }
 

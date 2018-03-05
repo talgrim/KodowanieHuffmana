@@ -11,6 +11,10 @@ namespace KodowanieHuffmana
     {
         public char? symbol;
         public int presence;
+        public string code;
+
+        [DisplayName("Kod")]
+        public string Kod => code;
         [DisplayName("Symbol")]
         public string Znak => symbol.ToString();
         [DisplayName("Liczba wystąpień")]

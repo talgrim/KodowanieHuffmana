@@ -7,9 +7,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Linq;
+
 
 namespace KodowanieHuffmana
 {
@@ -19,7 +19,9 @@ namespace KodowanieHuffmana
         private string text;
         private BitArray _encoded;
         private HuffmanTree huffmanTree;
+        private Symbols symbols;
         private string _encodedString;
+        private FileInfo _compressRatio;
         public Form1()
         {
             InitializeComponent();
@@ -33,7 +35,7 @@ namespace KodowanieHuffmana
 
         private void bBrowse_Click(object sender, EventArgs e)
         {
-            Symbols symbols = new Symbols();
+            symbols = new Symbols();
             DialogResult result = ofd1.ShowDialog();
             if(result == DialogResult.OK)
             {
@@ -53,6 +55,8 @@ namespace KodowanieHuffmana
                                 symbols.AddPresence(znak);
                         }
                     }
+                    
+                    
                     symbols.SortAscending();
                     lAlphabetLength.Text = symbols.List.Count.ToString();
                     gAlphabet.Visible = true;
@@ -66,39 +70,6 @@ namespace KodowanieHuffmana
             }
         }
 
-        //private BinaryTree BuildBinaryTree(Symbols symbols)
-        //{
-        //    var symbolInTree = new BinaryTree();
-        //    var symbolList = symbols.List;
-            
-        //    for(int i=0;i<symbolList.Count;i++)
-        //    {
-        //        if (symbolInTree.isEmpty())
-        //        {
-        //            symbolInTree.insert(symbolList[i].presence);
-        //        }
-        //        else
-        //        {
-        //            if(symbolInTree.root.number<symbolList[i].presence)
-        //        }
-
-
-
-
-
-
-
-        //        var symbol1 = symbolList[i];
-        //        var symbol2 = symbolList[i + 1];
-        //        new Symbol(null,12);
-        //        symbolInTree.insert(symbol1.presence + symbol2.presence);
-        //        symbolInTree.insert(symbol1.presence);
-        //        symbolInTree.insert(symbol2.presence);
-        //    }
-
-        //    return symbolInTree;
-        //}
-
         private void button1_Click(object sender, EventArgs e)
         {
             string input = text;
@@ -110,17 +81,34 @@ namespace KodowanieHuffmana
             // Encode
             _encoded = huffmanTree.Encode(input);
 
-            foreach (bool bit in _encoded)
+            encodedTextBox.Text = "";
+
+            if(_encoded.Count<1000)                
+                foreach(bool bit in _encoded)
+                {
+                    encodedTextBox.Text += ((bit ? 1 : 0) + "");
+                    _encodedString+= ((bit ? 1 : 0) + "");
+                }
+                
+            else
             {
-                encodedTextBox.Text += ((bit ? 1 : 0) + "");
-                _encodedString+= ((bit ? 1 : 0) + "");
+                encodedTextBox.Text = "Sekwencja zbyt długa do wyświetlenia";
             }
 
             // Decode
             string decoded = huffmanTree.Decode(_encoded);
 
             decodedTextBox.Text += (decoded);
-
+            foreach (var znak in symbols.List)
+            {
+                foreach (bool bit in huffmanTree.Encode(znak.Znak.ToString()))
+                {
+                    znak.code += (bit ? "1" : "0");
+                }
+            }
+            gAlphabet.DataSource = symbols.List;
+            gAlphabet.Update();
+            this.Update();
             saveFileButton.Visible = true;
             writeFileKeyButton.Visible = true;
 
