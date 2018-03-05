@@ -28,7 +28,7 @@ namespace KodowanieHuffmana
             encodeButton.Visible = false;
             saveFileButton.Visible = false;
             writeFileKeyButton.Visible = false;
-            readButton.Visible = false;
+            readFileButton.Visible = false;
         }
 
         private void bBrowse_Click(object sender, EventArgs e)
@@ -58,8 +58,7 @@ namespace KodowanieHuffmana
                     gAlphabet.Visible = true;
                     gAlphabet.DataSource = symbols.List;
                     encodeButton.Visible = true;
-                    saveFileButton.Visible = true;
-                    writeFileKeyButton.Visible = true;
+
                 }
                 catch (IOException)
                 {
@@ -122,6 +121,8 @@ namespace KodowanieHuffmana
 
             decodedTextBox.Text += (decoded);
 
+            saveFileButton.Visible = true;
+            writeFileKeyButton.Visible = true;
 
 
         }
@@ -129,14 +130,17 @@ namespace KodowanieHuffmana
         private void saveFileButton_Click(object sender, EventArgs e)
         {
 
-            SaveFileDialog savefile = new SaveFileDialog();
-            if (savefile.ShowDialog() == DialogResult.OK)
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.FileName = "SkompresowanyPlik.compress";
+            saveFile.DefaultExt = ".compress";
+            saveFile.Filter = "Key files (.compress)|*.compress";
+            if (saveFile.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
                     byte[] bytes = new byte[_encoded.Length / 8 + (_encoded.Length % 8 == 0 ? 0 : 1)];
                     _encoded.CopyTo(bytes, 0);
-                    File.WriteAllBytes(savefile.FileName, bytes);
+                    File.WriteAllBytes(saveFile.FileName, bytes);
                 }
                 catch
                 {
@@ -148,9 +152,11 @@ namespace KodowanieHuffmana
 
         }
 
-        private void readButton_Click(object sender, EventArgs e)
+        private void readFileButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
+            openFile.DefaultExt = ".compress";
+            openFile.Filter = "Key files (.compress)|*.compress";
             if (openFile.ShowDialog() == DialogResult.OK)
             {
 
@@ -184,12 +190,16 @@ namespace KodowanieHuffmana
 
         private void writeFileKeyButton_Click(object sender, EventArgs e)
         {
-            SaveFileDialog savefile = new SaveFileDialog();
-            if (savefile.ShowDialog() == DialogResult.OK)
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.FileName = "KluczDoPliku.key";
+            saveFile.DefaultExt = ".key";
+            saveFile.Filter = "Key files (.key)|*.key";
+            if (saveFile.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    WriteToBinaryFile(savefile.FileName, huffmanTree);
+                    //WriteToBinaryFile(savefile.FileName, huffmanTree);
+                    WriteToBinaryFile(saveFile.FileName,huffmanTree.Root);
                 }
                 catch (Exception exception)
                 {
@@ -202,12 +212,16 @@ namespace KodowanieHuffmana
         private void readFileKeyButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
+            openFile.DefaultExt = ".key";
+            openFile.Filter = "Key files (.key)|*.key";
             if (openFile.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    huffmanTree = ReadFromBinaryFile<HuffmanTree>(openFile.FileName);
-                    readButton.Visible = true;
+                    var freshHuffman = new HuffmanTree();
+                    freshHuffman.Root = ReadFromBinaryFile<Node>(openFile.FileName);
+                    huffmanTree = freshHuffman;
+                    readFileButton.Visible = true;
                 }
                 catch (Exception exception)
                 {

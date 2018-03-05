@@ -41,7 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.saveFileButton = new System.Windows.Forms.Button();
-            this.readButton = new System.Windows.Forms.Button();
+            this.readFileButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.fileTextBox = new System.Windows.Forms.TextBox();
             this.writeFileKeyButton = new System.Windows.Forms.Button();
@@ -167,15 +167,15 @@
             this.saveFileButton.UseVisualStyleBackColor = true;
             this.saveFileButton.Click += new System.EventHandler(this.saveFileButton_Click);
             // 
-            // readButton
+            // readFileButton
             // 
-            this.readButton.Location = new System.Drawing.Point(721, 262);
-            this.readButton.Name = "readButton";
-            this.readButton.Size = new System.Drawing.Size(75, 23);
-            this.readButton.TabIndex = 13;
-            this.readButton.Text = "Odczytaj plik";
-            this.readButton.UseVisualStyleBackColor = true;
-            this.readButton.Click += new System.EventHandler(this.readButton_Click);
+            this.readFileButton.Location = new System.Drawing.Point(721, 262);
+            this.readFileButton.Name = "readFileButton";
+            this.readFileButton.Size = new System.Drawing.Size(75, 23);
+            this.readFileButton.TabIndex = 13;
+            this.readFileButton.Text = "Odczytaj plik";
+            this.readFileButton.UseVisualStyleBackColor = true;
+            this.readFileButton.Click += new System.EventHandler(this.readFileButton_Click);
             // 
             // label6
             // 
@@ -223,7 +223,7 @@
             this.Controls.Add(this.writeFileKeyButton);
             this.Controls.Add(this.fileTextBox);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.readButton);
+            this.Controls.Add(this.readFileButton);
             this.Controls.Add(this.saveFileButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -260,7 +260,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button saveFileButton;
-        private System.Windows.Forms.Button readButton;
+        private System.Windows.Forms.Button readFileButton;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox fileTextBox;
         private System.Windows.Forms.Button writeFileKeyButton;
