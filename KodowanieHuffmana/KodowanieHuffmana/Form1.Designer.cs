@@ -51,9 +51,10 @@
             // 
             // bBrowse
             // 
-            this.bBrowse.Location = new System.Drawing.Point(12, 12);
+            this.bBrowse.Location = new System.Drawing.Point(16, 15);
+            this.bBrowse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bBrowse.Name = "bBrowse";
-            this.bBrowse.Size = new System.Drawing.Size(75, 23);
+            this.bBrowse.Size = new System.Drawing.Size(100, 28);
             this.bBrowse.TabIndex = 0;
             this.bBrowse.Text = "Przeglądaj...";
             this.bBrowse.UseVisualStyleBackColor = true;
@@ -62,43 +63,48 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(171, 17);
+            this.label1.Location = new System.Drawing.Point(228, 21);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.Size = new System.Drawing.Size(87, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Dane o pliku";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(141, 39);
+            this.label2.Location = new System.Drawing.Point(188, 48);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.Size = new System.Drawing.Size(101, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Długość tekstu";
             // 
             // lLength
             // 
             this.lLength.AutoSize = true;
-            this.lLength.Location = new System.Drawing.Point(237, 39);
+            this.lLength.Location = new System.Drawing.Point(316, 48);
+            this.lLength.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lLength.Name = "lLength";
-            this.lLength.Size = new System.Drawing.Size(0, 13);
+            this.lLength.Size = new System.Drawing.Size(0, 17);
             this.lLength.TabIndex = 3;
             // 
             // lAlphabetLength
             // 
             this.lAlphabetLength.AutoSize = true;
-            this.lAlphabetLength.Location = new System.Drawing.Point(237, 62);
+            this.lAlphabetLength.Location = new System.Drawing.Point(316, 76);
+            this.lAlphabetLength.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lAlphabetLength.Name = "lAlphabetLength";
-            this.lAlphabetLength.Size = new System.Drawing.Size(0, 13);
+            this.lAlphabetLength.Size = new System.Drawing.Size(0, 17);
             this.lAlphabetLength.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(141, 62);
+            this.label5.Location = new System.Drawing.Point(188, 76);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 13);
+            this.label5.Size = new System.Drawing.Size(114, 17);
             this.label5.TabIndex = 4;
             this.label5.Text = "Długość alfabetu";
             // 
@@ -106,18 +112,20 @@
             // 
             this.gAlphabet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.gAlphabet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gAlphabet.Location = new System.Drawing.Point(12, 100);
+            this.gAlphabet.Location = new System.Drawing.Point(16, 123);
+            this.gAlphabet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gAlphabet.Name = "gAlphabet";
             this.gAlphabet.ReadOnly = true;
-            this.gAlphabet.Size = new System.Drawing.Size(260, 150);
+            this.gAlphabet.Size = new System.Drawing.Size(347, 185);
             this.gAlphabet.TabIndex = 6;
             this.gAlphabet.Visible = false;
             // 
             // encodeButton
             // 
-            this.encodeButton.Location = new System.Drawing.Point(12, 52);
+            this.encodeButton.Location = new System.Drawing.Point(16, 64);
+            this.encodeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.encodeButton.Name = "encodeButton";
-            this.encodeButton.Size = new System.Drawing.Size(75, 23);
+            this.encodeButton.Size = new System.Drawing.Size(100, 28);
             this.encodeButton.TabIndex = 7;
             this.encodeButton.Text = "Kompresuj";
             this.encodeButton.UseVisualStyleBackColor = true;
@@ -125,43 +133,50 @@
             // 
             // encodedTextBox
             // 
-            this.encodedTextBox.Location = new System.Drawing.Point(295, 39);
+            this.encodedTextBox.Location = new System.Drawing.Point(393, 48);
+            this.encodedTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.encodedTextBox.Multiline = true;
             this.encodedTextBox.Name = "encodedTextBox";
-            this.encodedTextBox.Size = new System.Drawing.Size(184, 209);
+            this.encodedTextBox.ReadOnly = true;
+            this.encodedTextBox.Size = new System.Drawing.Size(244, 256);
             this.encodedTextBox.TabIndex = 8;
             // 
             // decodedTextBox
             // 
-            this.decodedTextBox.Location = new System.Drawing.Point(529, 39);
+            this.decodedTextBox.Location = new System.Drawing.Point(705, 48);
+            this.decodedTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.decodedTextBox.Multiline = true;
             this.decodedTextBox.Name = "decodedTextBox";
-            this.decodedTextBox.Size = new System.Drawing.Size(367, 88);
+            this.decodedTextBox.ReadOnly = true;
+            this.decodedTextBox.Size = new System.Drawing.Size(488, 107);
             this.decodedTextBox.TabIndex = 9;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(292, 15);
+            this.label3.Location = new System.Drawing.Point(389, 18);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 13);
+            this.label3.Size = new System.Drawing.Size(148, 17);
             this.label3.TabIndex = 10;
             this.label3.Text = "Skompresowane dane";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(526, 17);
+            this.label4.Location = new System.Drawing.Point(701, 21);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 13);
+            this.label4.Size = new System.Drawing.Size(126, 17);
             this.label4.TabIndex = 11;
             this.label4.Text = "Wynik dekompresji";
             // 
             // saveFileButton
             // 
-            this.saveFileButton.Location = new System.Drawing.Point(529, 262);
+            this.saveFileButton.Location = new System.Drawing.Point(705, 322);
+            this.saveFileButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.saveFileButton.Name = "saveFileButton";
-            this.saveFileButton.Size = new System.Drawing.Size(75, 23);
+            this.saveFileButton.Size = new System.Drawing.Size(100, 28);
             this.saveFileButton.TabIndex = 12;
             this.saveFileButton.Text = "Zapisz plik";
             this.saveFileButton.UseVisualStyleBackColor = true;
@@ -169,9 +184,10 @@
             // 
             // readFileButton
             // 
-            this.readFileButton.Location = new System.Drawing.Point(721, 262);
+            this.readFileButton.Location = new System.Drawing.Point(961, 322);
+            this.readFileButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.readFileButton.Name = "readFileButton";
-            this.readFileButton.Size = new System.Drawing.Size(75, 23);
+            this.readFileButton.Size = new System.Drawing.Size(100, 28);
             this.readFileButton.TabIndex = 13;
             this.readFileButton.Text = "Odczytaj plik";
             this.readFileButton.UseVisualStyleBackColor = true;
@@ -180,25 +196,29 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(526, 142);
+            this.label6.Location = new System.Drawing.Point(701, 175);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(137, 13);
+            this.label6.Size = new System.Drawing.Size(178, 17);
             this.label6.TabIndex = 14;
             this.label6.Text = "Wynik odczytywania z pliku";
             // 
             // fileTextBox
             // 
-            this.fileTextBox.Location = new System.Drawing.Point(529, 158);
+            this.fileTextBox.Location = new System.Drawing.Point(705, 194);
+            this.fileTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.fileTextBox.Multiline = true;
             this.fileTextBox.Name = "fileTextBox";
-            this.fileTextBox.Size = new System.Drawing.Size(367, 90);
+            this.fileTextBox.ReadOnly = true;
+            this.fileTextBox.Size = new System.Drawing.Size(488, 110);
             this.fileTextBox.TabIndex = 15;
             // 
             // writeFileKeyButton
             // 
-            this.writeFileKeyButton.Location = new System.Drawing.Point(620, 262);
+            this.writeFileKeyButton.Location = new System.Drawing.Point(827, 322);
+            this.writeFileKeyButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.writeFileKeyButton.Name = "writeFileKeyButton";
-            this.writeFileKeyButton.Size = new System.Drawing.Size(81, 23);
+            this.writeFileKeyButton.Size = new System.Drawing.Size(108, 28);
             this.writeFileKeyButton.TabIndex = 16;
             this.writeFileKeyButton.Text = "Zapisz klucz";
             this.writeFileKeyButton.UseVisualStyleBackColor = true;
@@ -206,9 +226,10 @@
             // 
             // readFileKeyButton
             // 
-            this.readFileKeyButton.Location = new System.Drawing.Point(811, 262);
+            this.readFileKeyButton.Location = new System.Drawing.Point(1081, 322);
+            this.readFileKeyButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.readFileKeyButton.Name = "readFileKeyButton";
-            this.readFileKeyButton.Size = new System.Drawing.Size(85, 23);
+            this.readFileKeyButton.Size = new System.Drawing.Size(113, 28);
             this.readFileKeyButton.TabIndex = 17;
             this.readFileKeyButton.Text = "Odczytaj klucz";
             this.readFileKeyButton.UseVisualStyleBackColor = true;
@@ -216,9 +237,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(908, 297);
+            this.ClientSize = new System.Drawing.Size(1211, 366);
             this.Controls.Add(this.readFileKeyButton);
             this.Controls.Add(this.writeFileKeyButton);
             this.Controls.Add(this.fileTextBox);
@@ -237,6 +258,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bBrowse);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.gAlphabet)).EndInit();
