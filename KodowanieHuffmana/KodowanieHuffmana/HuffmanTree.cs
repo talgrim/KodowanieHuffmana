@@ -2,8 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KodowanieHuffmana
 {
@@ -12,20 +10,9 @@ namespace KodowanieHuffmana
     {
         private List<Node> nodes = new List<Node>();
         public Node Root { get; set; }
-        public Dictionary<char, int> Frequencies = new Dictionary<char, int>();
 
-        public void Build(string source)
+        public void Build(Dictionary<char, int> Frequencies)
         {
-            for (int i = 0; i < source.Length; i++)
-            {
-                if (!Frequencies.ContainsKey(source[i]))
-                {
-                    Frequencies.Add(source[i], 0);
-                }
-
-                Frequencies[source[i]]++;
-            }
-
             foreach (KeyValuePair<char, int> symbol in Frequencies)
             {
                 nodes.Add(new Node() { Symbol = symbol.Key, Frequency = symbol.Value });

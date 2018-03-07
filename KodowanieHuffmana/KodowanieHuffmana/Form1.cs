@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Linq;
 
 
 namespace KodowanieHuffmana
@@ -21,16 +15,16 @@ namespace KodowanieHuffmana
         private HuffmanTree huffmanTree;
         private Symbols symbols;
         private string _encodedString;
-        private FileInfo _compressRatio;
+        private FileInfo _savedFile;
+        private FileInfo _openedFile;
+        private OpenFileDialog openFile;
         public Form1()
         {
             InitializeComponent();
             ofd1 = new OpenFileDialog();
             ofd1.Filter = "Text|*.txt";
-            encodeButton.Visible = false;
             saveFileButton.Visible = false;
-            writeFileKeyButton.Visible = false;
-            readFileButton.Visible = false;
+            encodeButton.Visible = false;
         }
 
         private void bBrowse_Click(object sender, EventArgs e)
@@ -42,27 +36,24 @@ namespace KodowanieHuffmana
                 string file = ofd1.FileName;
                 try
                 {
+                    _openedFile = new FileInfo(ofd1.FileName);
                     text = File.ReadAllText(file);
                     lLength.Text = text.Length.ToString();
-
-                    foreach(char znak in text)
+                    foreach(char symbol in text)
                     {
-                        if (Char.IsLetterOrDigit(znak))
-                        {
-                            if (!symbols.Contains(znak))
-                                symbols.Add(znak);
-                            else
-                                symbols.AddPresence(znak);
-                        }
+                        if (symbols.Contains(symbol))
+                            symbols.AddPresence(symbol);
+                        else
+                            symbols.Add(symbol);
                     }
-                    
-                    
-                    symbols.SortAscending();
+
+
+
+                    symbols.SortDescending();
                     lAlphabetLength.Text = symbols.List.Count.ToString();
                     gAlphabet.Visible = true;
                     gAlphabet.DataSource = symbols.List;
                     encodeButton.Visible = true;
-
                 }
                 catch (IOException)
                 {
@@ -72,14 +63,13 @@ namespace KodowanieHuffmana
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string input = text;
             huffmanTree = new HuffmanTree();
 
             // Build the Huffman tree
-            huffmanTree.Build(input);
+            huffmanTree.Build(symbols.ToDictionary());
 
             // Encode
-            _encoded = huffmanTree.Encode(input);
+            _encoded = huffmanTree.Encode(text);
 
             encodedTextBox.Text = "";
 
@@ -110,31 +100,33 @@ namespace KodowanieHuffmana
             gAlphabet.Update();
             this.Update();
             saveFileButton.Visible = true;
-            writeFileKeyButton.Visible = true;
-
-
         }
 
         private void saveFileButton_Click(object sender, EventArgs e)
         {
-
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.FileName = "SkompresowanyPlik.compress";
             saveFile.DefaultExt = ".compress";
-            saveFile.Filter = "Key files (.compress)|*.compress";
+            saveFile.Filter = "Compressed files|*.compress";
             if (saveFile.ShowDialog() == DialogResult.OK)
             {
-                try
+                byte[] bytes = new byte[_encoded.Length / 8 + (_encoded.Length % 8 == 0 ? 0 : 1)];
+                _encoded.CopyTo(bytes, 0);
+                using (BinaryWriter writer = new BinaryWriter(File.Open(saveFile.FileName, FileMode.Create)))
                 {
-                    byte[] bytes = new byte[_encoded.Length / 8 + (_encoded.Length % 8 == 0 ? 0 : 1)];
-                    _encoded.CopyTo(bytes, 0);
-                    File.WriteAllBytes(saveFile.FileName, bytes);
+                    writer.Write(symbols.List.Count);
+                    foreach(Symbol symbol in symbols.List)
+                    {
+                        writer.Write(symbol.symbol);
+                        writer.Write(symbol.presence);
+                    }
+                    writer.Write(bytes);
                 }
-                catch
-                {
-                    MessageBox.Show("Coś poszło nie tak");
-                }
-
+                _savedFile = new FileInfo(saveFile.FileName);
+                double saved = (double)_savedFile.Length;
+                double opened = (double)_openedFile.Length;
+                double ratio = opened / saved;
+                CompressionRatio.Text = opened.ToString() + " b / " + saved.ToString() + " b = " + (ratio == 0 ? "0. Wybierz plik przed kompresją." : ratio.ToString() );
             }
 
 
@@ -142,82 +134,30 @@ namespace KodowanieHuffmana
 
         private void readFileButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFile = new OpenFileDialog();
+            huffmanTree = new HuffmanTree();
+            symbols = new Symbols();
+            openFile = new OpenFileDialog();
             openFile.DefaultExt = ".compress";
-            openFile.Filter = "Key files (.compress)|*.compress";
+            openFile.Filter = "Compressed files|*.compress";
             if (openFile.ShowDialog() == DialogResult.OK)
             {
-
-                    byte[] bytes = System.IO.File.ReadAllBytes(openFile.FileName);
-                    BitArray bitText = new System.Collections.BitArray(bytes);
+                using (BinaryReader reader = new BinaryReader(File.Open(openFile.FileName, FileMode.Open)))
+                {
+                    int count = reader.ReadInt32();
+                    for (int i = 0; i < count; i++)
+                        symbols.Add(reader.ReadChar(), reader.ReadInt32());
+                    gAlphabet.DataSource = symbols.List;
+                    huffmanTree.Build(symbols.ToDictionary());
+                    long length = reader.BaseStream.Length - reader.BaseStream.Position;
+                    byte[] bytes = new byte[length];
+                    for (int i = 0; i < length; i++)
+                        bytes[i] = reader.ReadByte();
+                    BitArray bitText = new BitArray(bytes);
                     string decoded = huffmanTree.Decode(bitText);
                     fileTextBox.Text = decoded;
-
-
-            }
-        }
-
-
-        public static void WriteToBinaryFile<T>(string filePath, T objectToWrite, bool append = false)
-        {
-            using (Stream stream = File.Open(filePath, append ? FileMode.Append : FileMode.Create))
-            {
-                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                binaryFormatter.Serialize(stream, objectToWrite);
-            }
-        }
-
-        public static T ReadFromBinaryFile<T>(string filePath)
-        {
-            using (Stream stream = File.Open(filePath, FileMode.Open))
-            {
-                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                return (T)binaryFormatter.Deserialize(stream);
-            }
-        }
-
-        private void writeFileKeyButton_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFile = new SaveFileDialog();
-            saveFile.FileName = "KluczDoPliku.key";
-            saveFile.DefaultExt = ".key";
-            saveFile.Filter = "Key files (.key)|*.key";
-            if (saveFile.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    //WriteToBinaryFile(savefile.FileName, huffmanTree);
-                    WriteToBinaryFile(saveFile.FileName,huffmanTree.Root);
+                    lLength.Text = decoded.Length.ToString();
+                    lAlphabetLength.Text = symbols.List.Count.ToString();
                 }
-                catch (Exception exception)
-                {
-                    MessageBox.Show(exception.ToString(), "Coś poszło nie tak");
-                }
-
-            }
-        }
-
-        private void readFileKeyButton_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.DefaultExt = ".key";
-            openFile.Filter = "Key files (.key)|*.key";
-            if (openFile.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    var freshHuffman = new HuffmanTree();
-                    freshHuffman.Root = ReadFromBinaryFile<Node>(openFile.FileName);
-                    huffmanTree = freshHuffman;
-                    readFileButton.Visible = true;
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show(exception.ToString(), "Cos poszlo nie tak");
-                }
-
-
-
             }
         }
     }

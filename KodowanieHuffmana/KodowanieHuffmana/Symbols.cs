@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KodowanieHuffmana
 {
@@ -18,6 +15,11 @@ namespace KodowanieHuffmana
         public void Add(char znak)
         {
             List.Add(new Symbol(znak));
+        }
+
+        public void Add(char znak, int wystapienia)
+        {
+            List.Add(new Symbol(znak,wystapienia));
         }
 
         public void AddPresence(char znak)
@@ -39,6 +41,22 @@ namespace KodowanieHuffmana
         public void SortDescending()
         {
             List = List.OrderByDescending(o => o.presence).ToList();
+        }
+
+        public Dictionary<char, int> ToDictionary()
+        {
+            Dictionary<char, int> dictionary = new Dictionary<char, int>();
+            foreach (Symbol symbol in List)
+                dictionary.Add(symbol.symbol, symbol.presence);
+            return dictionary;
+        }
+
+        public override string ToString()
+        {
+            string result = "";
+            foreach (Symbol symbol in List)
+                result += symbol.ToString();
+            return result;
         }
     }
 }
