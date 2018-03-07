@@ -105,7 +105,7 @@
             // 
             this.gAlphabet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.gAlphabet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gAlphabet.Location = new System.Drawing.Point(12, 100);
+            this.gAlphabet.Location = new System.Drawing.Point(12, 110);
             this.gAlphabet.Name = "gAlphabet";
             this.gAlphabet.ReadOnly = true;
             this.gAlphabet.Size = new System.Drawing.Size(260, 150);
@@ -128,7 +128,7 @@
             this.encodedTextBox.Name = "encodedTextBox";
             this.encodedTextBox.ReadOnly = true;
             this.encodedTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.encodedTextBox.Size = new System.Drawing.Size(184, 209);
+            this.encodedTextBox.Size = new System.Drawing.Size(184, 221);
             this.encodedTextBox.TabIndex = 8;
             // 
             // decodedTextBox
@@ -201,7 +201,7 @@
             // CompressionRatio
             // 
             this.CompressionRatio.AutoSize = true;
-            this.CompressionRatio.Location = new System.Drawing.Point(63, 270);
+            this.CompressionRatio.Location = new System.Drawing.Point(141, 84);
             this.CompressionRatio.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CompressionRatio.Name = "CompressionRatio";
             this.CompressionRatio.Size = new System.Drawing.Size(122, 13);

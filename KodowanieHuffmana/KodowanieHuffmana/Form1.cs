@@ -126,7 +126,7 @@ namespace KodowanieHuffmana
                 double saved = (double)_savedFile.Length;
                 double opened = (double)_openedFile.Length;
                 double ratio = opened / saved;
-                CompressionRatio.Text = opened.ToString() + " b / " + saved.ToString() + " b = " + (ratio == 0 ? "0. Wybierz plik przed kompresją." : ratio.ToString() );
+                CompressionRatio.Text = opened.ToString() + " b / " + saved.ToString() + " b = " + (ratio == 0 ? "0. Wybierz plik przed kompresją." : ratio.ToString("0.00000") );
             }
 
 
