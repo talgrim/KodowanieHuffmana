@@ -10,7 +10,7 @@ namespace KodowanieHuffmana
     public class Symbol : IEquatable<Symbol>, IComparable<Symbol>
     {
         public char symbol;
-        public int presence;
+        public ushort presence;
         public string code;
 
         [DisplayName("Kod")]
@@ -26,7 +26,7 @@ namespace KodowanieHuffmana
             presence = 1;
         }
 
-        public Symbol(char znak,int wystapienia)
+        public Symbol(char znak, ushort wystapienia)
         {
             symbol = znak;
             presence = wystapienia;

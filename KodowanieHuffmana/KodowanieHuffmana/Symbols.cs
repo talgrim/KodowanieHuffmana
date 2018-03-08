@@ -17,7 +17,7 @@ namespace KodowanieHuffmana
             List.Add(new Symbol(znak));
         }
 
-        public void Add(char znak, int wystapienia)
+        public void Add(char znak, ushort wystapienia)
         {
             List.Add(new Symbol(znak,wystapienia));
         }
@@ -43,9 +43,9 @@ namespace KodowanieHuffmana
             List = List.OrderByDescending(o => o.presence).ToList();
         }
 
-        public Dictionary<char, int> ToDictionary()
+        public Dictionary<char, ushort> ToDictionary()
         {
-            Dictionary<char, int> dictionary = new Dictionary<char, int>();
+            Dictionary<char, ushort> dictionary = new Dictionary<char, ushort>();
             foreach (Symbol symbol in List)
                 dictionary.Add(symbol.symbol, symbol.presence);
             return dictionary;

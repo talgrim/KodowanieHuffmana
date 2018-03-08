@@ -11,9 +11,9 @@ namespace KodowanieHuffmana
         private List<Node> nodes = new List<Node>();
         public Node Root { get; set; }
 
-        public void Build(Dictionary<char, int> Frequencies)
+        public void Build(Dictionary<char, ushort> Frequencies)
         {
-            foreach (KeyValuePair<char, int> symbol in Frequencies)
+            foreach (KeyValuePair<char, ushort> symbol in Frequencies)
             {
                 nodes.Add(new Node() { Symbol = symbol.Key, Frequency = symbol.Value });
             }

@@ -88,7 +88,7 @@ namespace KodowanieHuffmana
             // Decode
             string decoded = huffmanTree.Decode(_encoded);
 
-            decodedTextBox.Text += (decoded);
+            decodedTextBox.Text = (decoded);
             foreach (var znak in symbols.List)
             {
                 foreach (bool bit in huffmanTree.Encode(znak.Znak.ToString()))
@@ -117,8 +117,8 @@ namespace KodowanieHuffmana
                     writer.Write(symbols.List.Count);
                     foreach(Symbol symbol in symbols.List)
                     {
-                        writer.Write(symbol.symbol);
-                        writer.Write(symbol.presence);
+                        writer.Write( symbol.symbol );
+                        writer.Write( Convert.ToUInt16(symbol.presence) );
                     }
                     writer.Write(bytes);
                 }
@@ -145,7 +145,7 @@ namespace KodowanieHuffmana
                 {
                     int count = reader.ReadInt32();
                     for (int i = 0; i < count; i++)
-                        symbols.Add(reader.ReadChar(), reader.ReadInt32());
+                        symbols.Add( reader.ReadChar(), reader.ReadUInt16());
                     gAlphabet.DataSource = symbols.List;
                     huffmanTree.Build(symbols.ToDictionary());
                     long length = reader.BaseStream.Length - reader.BaseStream.Position;
