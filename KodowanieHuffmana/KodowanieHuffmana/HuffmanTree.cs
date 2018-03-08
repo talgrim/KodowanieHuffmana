@@ -11,12 +11,10 @@ namespace KodowanieHuffmana
         private List<Node> nodes = new List<Node>();
         public Node Root { get; set; }
 
-        public void Build(Dictionary<char, ushort> Frequencies)
+        public void Build(Symbols symbols)
         {
-            foreach (KeyValuePair<char, ushort> symbol in Frequencies)
-            {
-                nodes.Add(new Node() { Symbol = symbol.Key, Frequency = symbol.Value });
-            }
+            foreach (Symbol symbol in symbols.List)
+                nodes.Add(new Node() { Symbol = symbol.symbol, Frequency = symbol.presence });
 
             while (nodes.Count > 1)
             {
@@ -72,16 +70,12 @@ namespace KodowanieHuffmana
                 if (bit)
                 {
                     if (current.Right != null)
-                    {
                         current = current.Right;
-                    }
                 }
                 else
                 {
                     if (current.Left != null)
-                    {
                         current = current.Left;
-                    }
                 }
 
                 if (IsLeaf(current))

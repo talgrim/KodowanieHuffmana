@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace KodowanieHuffmana
 {
-    class Symbols
+    public class Symbols
     {
         public List<Symbol> List { get; private set; }
 
@@ -41,14 +41,6 @@ namespace KodowanieHuffmana
         public void SortDescending()
         {
             List = List.OrderByDescending(o => o.presence).ToList();
-        }
-
-        public Dictionary<char, ushort> ToDictionary()
-        {
-            Dictionary<char, ushort> dictionary = new Dictionary<char, ushort>();
-            foreach (Symbol symbol in List)
-                dictionary.Add(symbol.symbol, symbol.presence);
-            return dictionary;
         }
 
         public override string ToString()
